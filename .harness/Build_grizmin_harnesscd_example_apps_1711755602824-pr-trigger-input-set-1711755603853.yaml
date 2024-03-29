@@ -1,0 +1,14 @@
+inputSet:
+  name: Build_grizmin_harnesscd_example_apps_1711755602824-pr-trigger-input-set
+  identifier: Build_grizmin_harnesscd_example_apps_1711755602824prtriggerinputset
+  orgIdentifier: default
+  projectIdentifier: default_project
+  pipeline:
+    identifier: Build_grizmin_harnesscd_example_apps_1711755602824
+    properties:
+      ci:
+        codebase:
+          build:
+            type: PR
+            spec:
+              number: <+trigger.prNumber>
