@@ -17,17 +17,25 @@ pipeline:
           cloneCodebase: true
           execution:
             steps:
-              - step:
-                  identifier: echo
-                  name: echo
-                  spec:
-                    command: echo hello world
-                  timeout: ""
-                  type: Run
+              - parallel:
+                  - step:
+                      identifier: echo
+                      name: echo
+                      spec:
+                        command: echo hello world
+                      timeout: ""
+                      type: Run
+                  - step:
+                      type: Run
+                      name: Run_2
+                      identifier: Run_2
+                      spec:
+                        shell: Python
+                        command: print(f"Hello from Python!")
           platform:
-            arch: Amd64
             os: Linux
+            arch: Amd64
           runtime:
-            spec: {}
             type: Docker
+            spec: {}
         type: CI
