@@ -21,13 +21,25 @@ pipeline:
                   identifier: echo
                   name: echo
                   spec:
-                    command: echo hello world
+                    shell: Sh
+                    command: |-
+                      echo hello world
+                      MY_HAR_ENV_OUT=$(env | sort)
+                    outputVariables:
+                      - name: MY_HAR_ENV_OUT
                   timeout: ""
                   type: Run
+              - step:
+                  type: Run
+                  name: Output Shell Env
+                  identifier: Output_Shell_Env
+                  spec:
+                    shell: Sh
+                    command: echo $MY_HAR_ENV_OUT
           platform:
-            arch: Arm64
             os: MacOS
+            arch: Arm64
           runtime:
-            spec: {}
             type: Docker
+            spec: {}
         type: CI
