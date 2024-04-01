@@ -24,8 +24,8 @@ pipeline:
                     shell: Sh
                     command: |-
                       echo hello world
-                      echo "Exporting \$MY_HAR_ENV_OUT"
-                      export MY_HAR_ENV_OUT=$(env | sort)
+                      echo "Defining \$MY_HAR_ENV_OUT"
+                      MY_HAR_ENV_OUT='My Variable'
                       echo "\$MY_HAR_ENV_OUT equals to: ${MY_HAR_ENV_OUT}"
                     outputVariables:
                       - name: MY_HAR_ENV_OUT
@@ -36,8 +36,10 @@ pipeline:
                   name: Output Shell Env
                   identifier: Output_Shell_Env
                   spec:
-                    shell: Sh
-                    command: "echo \"MY_HAR_ENV_OUT equal to: <+execution.steps.echo.output.outputVariables.MY_HAR_ENV_OUT>\""
+                    shell: Bash
+                    command: |-
+                      echo "MY_HAR_ENV_OUT equal to: <+execution.steps.echo.output.outputVariables.MY_HAR_ENV_OUT>"
+                      echo "INPUT:" <+input>
                     envVariables: <+input>
           platform:
             os: MacOS
