@@ -24,7 +24,7 @@ pipeline:
                     shell: Sh
                     command: |-
                       echo hello world
-                      MY_HAR_ENV_OUT=$(env | sort)
+                      export MY_HAR_ENV_OUT=$(env | sort)
                     outputVariables:
                       - name: MY_HAR_ENV_OUT
                   timeout: ""
