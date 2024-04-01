@@ -1,0 +1,14 @@
+inputSet:
+  name: Build_grizmin_harnesscd_example_apps_1711958926683-push-trigger-input-set
+  identifier: Build_grizmin_harnesscd_example_apps_1711958926683pushtriggerinputset
+  orgIdentifier: default
+  projectIdentifier: test_build
+  pipeline:
+    identifier: Build_grizmin_harnesscd_example_apps_1711958926683
+    properties:
+      ci:
+        codebase:
+          build:
+            type: branch
+            spec:
+              branch: <+trigger.branch>
