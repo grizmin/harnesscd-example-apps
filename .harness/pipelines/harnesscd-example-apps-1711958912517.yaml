@@ -24,7 +24,9 @@ pipeline:
                     shell: Sh
                     command: |-
                       echo hello world
+                      echo "Exporting \$MY_HAR_ENV_OUT"
                       export MY_HAR_ENV_OUT=$(env | sort)
+                      echo "\$MY_HAR_ENV_OUT equals to: ${MY_HAR_ENV_OUT}"
                     outputVariables:
                       - name: MY_HAR_ENV_OUT
                   timeout: ""
@@ -35,7 +37,7 @@ pipeline:
                   identifier: Output_Shell_Env
                   spec:
                     shell: Sh
-                    command: echo $MY_HAR_ENV_OUT
+                    command: "echo \"MY_HAR_ENV_OUT equal to: ${MY_HAR_ENV_OUT}\""
           platform:
             os: MacOS
             arch: Arm64
