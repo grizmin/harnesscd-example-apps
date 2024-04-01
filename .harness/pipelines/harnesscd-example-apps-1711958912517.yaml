@@ -37,7 +37,8 @@ pipeline:
                   identifier: Output_Shell_Env
                   spec:
                     shell: Sh
-                    command: "echo \"MY_HAR_ENV_OUT equal to: ${MY_HAR_ENV_OUT}\""
+                    command: "echo \"MY_HAR_ENV_OUT equal to: <+execution.steps.echo.output.outputVariables.MY_HAR_ENV_OUT>\""
+                    envVariables: <+input>
           platform:
             os: MacOS
             arch: Arm64
